@@ -8,6 +8,17 @@
   </head>
   <body>
     click pic <br />
-    <input type="file" accept="image/*" capture="camera" />
+    <input id="file" type="file" accept="image/*" capture="camera" />
+    <img id="output" style="max-width: 350px;margin-bottom: 70px;" />
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(() => {
+      $("#file").change(event => {
+        console.log(event.target.files[0]);
+        var image = document.getElementById("output");
+        image["src"] = URL.createObjectURL(event.target.files[0]);
+      });
+    });
+  </script>
 </html>
